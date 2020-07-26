@@ -4,13 +4,22 @@ import React, { useState } from 'react';
 
 const App = () => {
   // console.log("name")
-  const [inputList, setInputList] = useState("buy apple");
+  const [inputList, setInputList] = useState("");
+  const [Items, setItems] = useState([]);
 
 
   const itemEvent = (event) => {
     setInputList(event.target.value)
 
   };
+
+  const listOfItems = () => {
+    setItems((oldItems) => {
+      return [...oldItems, inputList];
+    });
+    setInputList("");
+  };
+
   return (
     <>
       <div className="main_div">
@@ -18,11 +27,14 @@ const App = () => {
           <br />
           <h1> ToDo list </h1>
           <br />
-          <input type="text" placeholder="Add a Items" onChange={itemEvent} />
-          <button> + </button>
+          <input type="text" placeholder="Add a Items" value={inputList} onChange={itemEvent} />
+          <button onClick={listOfItems}> + </button>
 
           <ol>
-            <li> {inputList} </li>
+            {/* <li> {inputList} </li> */}
+            {Items.map((itemval) => {
+              return <li> {itemval} </li>;
+            })}
           </ol>
         </div>
       </div>
