@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ToDoLists from "./ToDoLists";
 // import logo from './logo.svg';
 // import './App.css';
 
@@ -33,7 +34,8 @@ const App = () => {
           <ol>
             {/* <li> {inputList} </li> */}
             {Items.map((itemval) => {
-              return <li> {itemval} </li>;
+
+              return <ToDoLists text={itemval} />;
             })}
           </ol>
         </div>
